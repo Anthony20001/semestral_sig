@@ -1,34 +1,47 @@
-<?php 
-    class Product_Controller{
-         public static function search(){
-            if(isset($_SESSION["user"])){
-                $titulo = "Creación de comentario de contacto";
-                require_once "views/templates/header.php";
-                require_once "views/templates/navbar.php";
-                require_once "views/products/search.php";
+<?php
+if (session_status() == 0) session_start();
+require_once "models/product.php";
 
-                Product_Controller::show();
+class Product_Controller
+{
+    public static function search()
+    {
+        if (isset($_SESSION["user"])) {
+            $obj = new Product();
+            $result = $obj->index();
 
-                require_once "views/products/show.php";
-                require_once "views/templates/footer.php";
-            }else{
-                header("location:index.php?"."c=".Security::encode("Home")."&m=".Security::encode("error")."&msg= Recurso restringido");
-            }
-         }
-
-         /*public function show($id){
-        
-         }*/
-
-         public static function show(){
-            if(isset($_GET["id"]) & is_numeric($_GET["id"])){
-                $id = filter_var($_GET["id"], FILTER_SANITIZE_SPECIAL_CHARS) ;
-                $obj = new Product($id);
-                $result = $obj->getProducts();
-                require_once "views/products/show.php";
-            }
+            $titulo = "Productos";
+            require_once "views/templates/header.php";
+            require_once "views/templates/navbar.php";
+            require_once "views/products/search.php";
+            require_once "views/templates/footer.php";
+        } else {
+            header("location:index.php?" . "c=" . Security::encode("Home") . "&m=" . Security::encode("error") . "&msg= Recurso restringido");
         }
     }
 
-    
-?>
+    /*public function show($id){
+        
+         }*/
+
+    public static function show()
+    {
+        if (isset($_SESSION["user"])) {
+            if (isset($_POST["id_product"])) {
+                if (is_numeric($_POST["id_product"])) {
+                    $id = filter_var($_POST["id_product"], FILTER_SANITIZE_SPECIAL_CHARS);
+                    $obj = new Product($id);
+                    $result = $obj->show();
+
+                    $titulo = "Resultados de la búsqueda del producto";
+                    require_once "views/templates/header.php";
+                    require_once "views/templates/navbar.php";
+                    require_once "views/products/show.php";
+                    require_once "views/templates/footer.php";
+                }
+            }
+        }else{
+            header("location:index.php?" . "c=" . Security::encode("Home") . "&m=" . Security::encode("error") . "&msg= Acceso denegado");
+        }
+    }
+}

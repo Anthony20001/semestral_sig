@@ -27,6 +27,12 @@
 
             return true;
         }
+
+        public static function redirectTo($controller, $method){
+            $controller = Security::encode($controller); 
+            $method = Security::encode($method); 
+            return "index.php?c=".$controller."&m=".$method;
+        }
         
     }
 ?>
