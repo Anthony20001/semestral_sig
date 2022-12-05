@@ -1,0 +1,63 @@
+{
+    "packages": [
+        {
+            "name": "facturapi/facturapi-php",
+            "version": "2.3.0",
+            "version_normalized": "2.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FacturAPI/facturapi-php.git",
+                "reference": "d56f1f10a0d4c00411defa4a969bb0be43051706"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FacturAPI/facturapi-php/zipball/d56f1f10a0d4c00411defa4a969bb0be43051706",
+                "reference": "d56f1f10a0d4c00411defa4a969bb0be43051706",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "time": "2022-08-24T17:02:39+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "/src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jhonatan Laguna",
+                    "email": "hola@jhonatanlaguna.com",
+                    "homepage": "http://jhonatanlaguna.com"
+                }
+            ],
+            "description": "Facturapi's PHP client library",
+            "homepage": "https://www.facturapi.io/",
+            "keywords": [
+                "api",
+                "cfdi",
+                "factura",
+                "facturapi",
+                "mexico",
+                "sat"
+            ],
+            "support": {
+                "issues": "https://github.com/FacturAPI/facturapi-php/issues",
+                "source": "https://github.com/FacturAPI/facturapi-php/tree/2.3.0"
+            },
+            "install-path": "../facturapi/facturapi-php"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
